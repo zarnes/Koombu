@@ -7,5 +7,6 @@ namespace Koombu_API.Models.DAO
 {
     public class PostDAO
     {
+        
     }
 }
