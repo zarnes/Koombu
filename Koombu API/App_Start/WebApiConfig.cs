@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Koombu_API.App_Start;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Web.Http;
 
 namespace Koombu_API
@@ -19,6 +21,8 @@ namespace Koombu_API
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.Formatters.Add(new BrowserJsonFormatter());
         }
     }
 }
