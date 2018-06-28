@@ -40,6 +40,17 @@ namespace Koombu_API.Models.DAO
 
         public void createUser(User user)
         {
+            string sql = "Insert Into `user` (`id`, `firstname`, `lastname` ,`birthdate`,`mail`,`company`,`title`) values (null, @firstname, @lastname, @birthdate,@mail,@company,@title)";
+            MySqlCommand cmd = Database.Instance.Connection.CreateCommand();
+            cmd.CommandText = sql;
+            cmd.Parameters.AddWithValue("@firstname", user.FirstName);
+            cmd.Parameters.AddWithValue("@lastname", user.LastName);
+            cmd.Parameters.AddWithValue("@birthdate", user.BirthDate);
+            cmd.Parameters.AddWithValue("@company", user.Company);
+            cmd.Parameters.AddWithValue("@title", user.Title);
+            cmd.Parameters.AddWithValue("@mail", user.Mail);
+            cmd.ExecuteNonQuery();
+            cmd.Dispose();
 
         }
 

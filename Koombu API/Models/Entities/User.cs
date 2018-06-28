@@ -49,6 +49,15 @@ namespace Koombu_API.Models
             set { _title = value; }
         }
 
+        private string _mail;
+
+        public string Mail
+        {
+            get { return _mail; }
+            set { _mail = value; }
+        }
+
+
         public User() {}
 
         public User(int id, string firstname, string lastname, DateTime birthdate, string company, string title)
