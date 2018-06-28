@@ -16,6 +16,7 @@ namespace Koombu_API.Models.DAO
         {
             return new User()
             {
+                Id = 1,
                 LastName = "Doe",
                 FirstName = "John"
             };
