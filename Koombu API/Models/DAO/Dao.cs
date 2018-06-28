@@ -15,11 +15,11 @@ namespace Koombu_API.Models.DAO
 
             Instance = this;
 
-            string connectionInitiator = "Database=" + "supfile" + "; ";
+            string connectionInitiator = "Database=" + "koombu" + "; ";
             connectionInitiator += "Data Source=" + "localhost" + "; ";
 
-            connectionInitiator += "User Id=" + "supfileUser" + "; ";
-            connectionInitiator += "Password=" + "ogdTdolLxsFDrrNwI3JB" + "; ";
+            connectionInitiator += "User Id=" + "koombuUser" + "; ";
+            connectionInitiator += "Password=" + "kqvkb5WTv7OlmbmbORN7" + "; ";
 
             connectionInitiator += "SslMode=" + "none" + "; ";
             Connection = new MySqlConnection(connectionInitiator);
