@@ -36,6 +36,7 @@ namespace Koombu_API.Models.DAO
                 reader.GetString("company"),
                 reader.GetString("title")
                 );
+
         }
 
         public void createUser(User user)
