@@ -12,7 +12,7 @@ namespace Koombu_API.Models.DAO
             
         }
 
-        public User GetUser(int id)
+        /*public User GetUser(int id)
         {
             string sql = "SELECT `id`, `firstname`, `lastname`, `birthdate`,`mail`, `company`, `title` FROM `user` WHERE `id` = " + id;
             MySqlCommand cmd = Database.Instance.Connection.CreateCommand();
@@ -53,7 +53,7 @@ namespace Koombu_API.Models.DAO
             cmd.ExecuteNonQuery();
             cmd.Dispose();
 
-        }
+        }*/
 
     }
 }

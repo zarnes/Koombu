@@ -7,5 +7,11 @@ namespace Koombu_API.Models.DAO
 {
     public class LikeDAO
     {
+        public LikeDAO()
+        {
+
+        }
+
+        //public Like 
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -68,5 +69,22 @@ namespace Koombu_API.Models
             GroupId = groupId;
             Attachment = attachment;
         }
+
+        /*public static GetPost(int id)
+        {
+            string sql = "SELECT * FROM `post` WHERE `id` = @id;";
+            MySqlCommand cmd = Database.Instance.Connection.CreateCommand();
+            cmd.CommandText = sql;
+            
+            MySqlDataReader reader = cmd.ExecuteReader();
+
+            bool result = reader.Read();
+            if (!result)
+            {
+                reader.Close();
+                cmd.Dispose();
+                return null;
+            }
+        }*/
     }
 }
