@@ -1,4 +1,5 @@
 ﻿using Koombu_API.App_Start;
+using Koombu_API.Models.DAO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,8 @@ namespace Koombu_API
             );
 
             config.Formatters.Add(new BrowserJsonFormatter());
+
+            new DAO();
         }
     }
 }

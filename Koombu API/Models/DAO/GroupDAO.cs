@@ -12,7 +12,7 @@ namespace Koombu_API.Models.DAO
 
         }
 
-        public Group GetGroup(int id)
+        /*public Group GetGroup(int id)
         {
             string sql = "SELECT `id`, `name`, `private`, `ownerid`, FROM `group` WHERE `id` = " + id;
             MySqlCommand cmd = Database.Instance.Connection.CreateCommand();
@@ -57,7 +57,7 @@ namespace Koombu_API.Models.DAO
             cmd.Parameters.AddWithValue("@group_id", groupId);
             cmd.ExecuteNonQuery();
             cmd.Dispose();
-        }
+        }*/
 
    */ }
 }

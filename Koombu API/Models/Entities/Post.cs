@@ -8,56 +8,23 @@ namespace Koombu_API.Models
 {
     public class Post
     {
-        private int _id;
-        public int Id
-        {
-            get { return _id; }
-            set { _id = value; }
-        }
+        //[PrimaryKey]
+        public int Id { get; set; }
 
-        private string _title;
-        public string Title
-        {
-            get { return _title; }
-            set { _title = value; }
-        }
+        //[MaxLength(100)]
+        public string Title { get; set; }
 
-        private string _content;
-        public string Content
-        {
-            get { return _content; }
-            set { _content = value; }
-        }
+        public string Content { get; set; }
 
-        private string _picture;
-        public string Picture
-        {
-            get { return _picture; }
-            set { _picture = value; }
-        }
+        public string Picture { get; set; }
 
-        private int _userId;
-        public int UserId
-        {
-            get { return _userId; }
-            set { _userId = value; }
-        }
+        public int UserId { get; set; }
 
-        private int _groupId;
-        public int GroupId
-        {
-            get { return _groupId; }
-            set { _groupId = value; }
-        }
+        public int GroupId { get; set; }
 
-        private string _attachment;
-        public string Attachment
-        {
-            get { return _attachment; }
-            set { _attachment = value; }
-        }
+        public string Attachment { get; set; }
 
-        public Post() { }
+        /*public Post() { }
 
         public Post(int id, string title, string content, string picture, int userId, int groupId, string attachment)
         {
@@ -68,7 +35,7 @@ namespace Koombu_API.Models
             UserId = userId;
             GroupId = groupId;
             Attachment = attachment;
-        }
+        }*/
 
         /*public static GetPost(int id)
         {

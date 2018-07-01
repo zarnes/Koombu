@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        //form encoded data
+        var dataType = 'application/x-www-form-urlencoded; charset=utf-8';
+        var data = $('form').serialize();
+
+        //JSON data
+        var dataType = 'application/json; charset=utf-8';
+        var data = {
+            Id: '1',
+            Val: 'Hellow'
+        }
+
+        console.log('Submitting form...');
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost:51164/api/values',
+            dataType: 'json',
+            contentType: dataType,
+            data: data,
+            success: function (result) {
+                console.log('Data received: ');
+                console.log(result);
+            }
+        });
+    </script>
+</body>
+</html>
