@@ -7,7 +7,7 @@ namespace Koombu_API.Models.DAO
 {
     public class User_GroupDAO
     {
-        public void addUserToGroup(int userId, int groupId, bool isAdmin)
+        /*public void addUserToGroup(int userId, int groupId, bool isAdmin)
         {
             string sql = "Insert Into `user_group` (`id`, `group_id`, `user_id` ,`is_admin`) values (null, @group_id, @user_id,@is_admin)";
             MySqlCommand cmd = Database.Instance.Connection.CreateCommand();
@@ -28,6 +28,6 @@ namespace Koombu_API.Models.DAO
             cmd.Parameters.AddWithValue("@user_id", userId);
             cmd.ExecuteNonQuery();
             cmd.Dispose();
-        }
+        }*/
     }
 }

@@ -8,7 +8,7 @@ namespace Koombu_API.Models.DAO
     public class AccessDao
     {
 
-        public int Access(string userMail, string psw)
+        /*public int Access(string userMail, string psw)
         {
             string sql = "SELECT user_id  FROM `access` WHERE `email` = " + iuserMail +" and psw ="+ psw;
             MySqlCommand cmd = Database.Instance.Connection.CreateCommand();
@@ -23,7 +23,7 @@ namespace Koombu_API.Models.DAO
             }
 
             return reader.GetInt32("user_id");
-        }
+        }*/
     }
 
 }

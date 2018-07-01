@@ -16,7 +16,7 @@ namespace Koombu_API.Controllers
             List<Post> posts = new List<Post>();
             for (int i = 0; i < 10; ++i)
             {
-                posts.Add(new Post(
+                /*posts.Add(new Post(
                     i,
                     i.ToString(),
                     "Content : " + i.ToString(),
@@ -24,7 +24,7 @@ namespace Koombu_API.Controllers
                     i,
                     i,
                     i.ToString() + ".file"
-                ));
+                ));*/
             }
 
             return posts;
@@ -33,7 +33,7 @@ namespace Koombu_API.Controllers
         // GET: api/Post/5
         public Post Get(int id)
         {
-            return new Post(
+            /*return new Post(
                     id,
                     id.ToString(),
                     "Content : " + id.ToString(),
@@ -41,7 +41,8 @@ namespace Koombu_API.Controllers
                     id,
                     id,
                     id.ToString() + ".file"
-                );
+                );*/
+            return null;
         }
 
         // POST: api/Post
