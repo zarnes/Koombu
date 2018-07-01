@@ -1,0 +1,31 @@
+﻿
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="wrap">
+                <p class="form-title">
+                    Creer un compte
+                </p>
+                <form class="login" action="~/AddUser/CreateUser">
+                    <label> Nom</label>
+                    <input type="text" name="firstName"  />
+                    <label> Prenom</label>
+                    <input type="text" name="lastName" />
+                    <label> E-mail</label>
+                    <input type="text" name="email" />
+                    <label> date de naissance</label>
+                    <input type="date" id="start" value="2018-07-22" min="2018-01-01" max="2018-12-31" name="brth"/>
+                    <label> Titre</label>
+                    <input type="text" name="titre" />
+                    <label> Comapny</label>
+                    <input type="text" name="company" />
+                    <label> mot de passe</label>
+                    <input type="password" name="psw" />
+                    <input type="submit" value="enregister" class="btn btn-success btn-sm" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

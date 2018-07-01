@@ -6,7 +6,7 @@ using System.Web;
 namespace Koombu_API.Models.DAO
 {
     public class User_GroupDAO
-    {
+    {/*
         public void addUserToGroup(int userId, int groupId, bool isAdmin)
         {
             string sql = "Insert Into `user_group` (`id`, `group_id`, `user_id` ,`is_admin`) values (null, @group_id, @user_id,@is_admin)";
@@ -29,5 +29,5 @@ namespace Koombu_API.Models.DAO
             cmd.ExecuteNonQuery();
             cmd.Dispose();
         }
-    }
+    */}
 }

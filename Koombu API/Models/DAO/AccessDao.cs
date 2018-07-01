@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,10 +8,11 @@ namespace Koombu_API.Models.DAO
 {
     public class AccessDao
     {
+        public object Database { get; private set; }
 
-        public int Access(string userMail, string psw)
+        /*public int Access(string userMail, string psw)
         {
-            string sql = "SELECT user_id  FROM `access` WHERE `email` = " + iuserMail +" and psw ="+ psw;
+            string sql = "SELECT user_id  FROM `access` WHERE `email` = " + userMail + " and psw ="+ psw;
             MySqlCommand cmd = Database.Instance.Connection.CreateCommand();
             cmd.CommandText = sql;
             MySqlDataReader reader = cmd.ExecuteReader();
@@ -23,7 +25,7 @@ namespace Koombu_API.Models.DAO
             }
 
             return reader.GetInt32("user_id");
-        }
+        }*/
     }
 
 }

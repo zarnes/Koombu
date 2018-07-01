@@ -9,7 +9,7 @@ namespace Koombu_API.Models.DAO
     {
 
         public Dao()
-        {
+        {/*
             if (Instance != null)
                 return;
 
@@ -24,6 +24,6 @@ namespace Koombu_API.Models.DAO
             connectionInitiator += "SslMode=" + "none" + "; ";
             Connection = new MySqlConnection(connectionInitiator);
             Connection.Open();
-        }
+       */ }
     }
 }

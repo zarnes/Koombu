@@ -6,7 +6,7 @@ using System.Web;
 namespace Koombu_API.Models.DAO
 {
     public class GroupDAO
-    {
+    {/*
         public GroupDAO()
         {
 
@@ -59,5 +59,5 @@ namespace Koombu_API.Models.DAO
             cmd.Dispose();
         }
 
-    }
+   */ }
 }
