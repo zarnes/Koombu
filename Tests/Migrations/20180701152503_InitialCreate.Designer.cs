@@ -9,7 +9,7 @@ using Tests;
 namespace Tests.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20180628133252_InitialCreate")]
+    [Migration("20180701152503_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,6 +25,8 @@ namespace Tests.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Val");
 
                     b.HasKey("Id");
 

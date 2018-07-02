@@ -24,7 +24,7 @@ namespace Koombu_API
             );
 
             config.Formatters.Add(new BrowserJsonFormatter());
-
+            
             new DAO();
         }
     }

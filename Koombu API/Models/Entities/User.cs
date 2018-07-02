@@ -3,61 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Koombu_API.Models
+namespace API.Models
 {
     public class User
     {
-        private int _id;
-        public int Id
-        {
-            get { return _id; }
-            set { _id = value; }
-        }
-
-        private string _firstName;
-        public string FirstName
-        {
-            get { return _firstName; }
-            set { _firstName = value; }
-        }
-
-        private string _lastName;
-        public string LastName
-        {
-            get { return _lastName; }
-            set { _lastName = value; }
-        }
-
-        private DateTime _birthDate;
-        public DateTime BirthDate
-        {
-            get { return _birthDate; }
-            set { _birthDate = value; }
-        }
-
-        private string _company;
-        public string Company
-        {
-            get { return _company; }
-            set { _company = value; }
-        }
-
-        private string _title;
-        public string Title
-        {
-            get { return _title; }
-            set { _title = value; }
-        }
-
-        private string _mail;
-
-        public string Mail
-        {
-            get { return _mail; }
-            set { _mail = value; }
-        }
-
-
+        public int Id { get; set; }
+        
+        public string FirstName { get; set; }
+        
+        public string LastName { get; set; }
+        
+        public DateTime BirthDate { get; set; }
+        
+        public string Company { get; set; }
+        
+        public string Title { get; set; }
+        
+        public string Mail { get; set; }
+        
         public User() {}
 
         public User(int id, string firstname, string lastname, DateTime birthdate, string company, string title)

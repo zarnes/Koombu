@@ -3,37 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Koombu_API.Models
+namespace API.Models
 {
     public class Group
     {
-        private int _id;
-        public int Id
-        {
-            get { return _id; }
-            set { _id = value; }
-        }
-
-        private string _name;
-        public string Name
-        {
-            get { return _name; }
-            set { _name = value; }
-        }
-
-        private bool _private;
-        public bool Private
-        {
-            get { return _private; }
-            set { _private = value; }
-        }
-
-        private int _ownerId;
-        public int OwnerId
-        {
-            get { return _ownerId; }
-            set { _ownerId = value; }
-        }
+        public int Id { get; set; }
+        
+        public string Name { get; set; }
+        
+        public bool Private { get; set; }
+        
+        public int OwnerId { get; set; }
 
         public Group() {}
 

@@ -24,6 +24,8 @@ namespace Tests.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Val");
+
                     b.HasKey("Id");
 
                     b.ToTable("Values");

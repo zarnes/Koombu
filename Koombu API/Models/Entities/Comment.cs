@@ -3,37 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Koombu_API.Models
+namespace API.Models
 {
     public class Comment
     {
-        private int _id;
-        public int Id
-        {
-            get { return _id; }
-            set { _id = value; }
-        }
-
-        private int _postId;
-        public int PostId
-        {
-            get { return _postId; }
-            set { _postId = value; }
-        }
-
-        private int _userId;
-        public int UserId
-        {
-            get { return _userId; }
-            set { _userId = value; }
-        }
-
-        private string _content;
-        public string Content
-        {
-            get { return _content; }
-            set { _content = value; }
-        }
+        public int Id { get; set; }
+        
+        public int PostId { get; set; }
+        
+        public int UserId { get; set; }
+        
+        public string Content { get; set; }
 
         public Comment() {}
 
