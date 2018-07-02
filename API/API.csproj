@@ -5,11 +5,29 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20180702205852_InitialCreate.cs" />
+    <Compile Remove="Migrations\20180702205852_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20180702210734_InitialCreate.cs" />
+    <Compile Remove="Migrations\20180702210734_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20180702212022_InitialCreate.cs" />
+    <Compile Remove="Migrations\20180702212022_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20180702212321_InitialCreate.cs" />
+    <Compile Remove="Migrations\20180702212321_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20180702212603_InitialCreate.cs" />
+    <Compile Remove="Migrations\20180702212603_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20180702212736_InitialCreate.cs" />
+    <Compile Remove="Migrations\20180702212736_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20180702212950_InitialCreate.cs" />
+    <Compile Remove="Migrations\20180702212950_InitialCreate.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.3" />
   </ItemGroup>
 
   <ItemGroup>

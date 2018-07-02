@@ -1,63 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace Koombu_API.Models
+namespace API.Models
 {
     public class User
     {
-        private int _id;
-        public int Id
-        {
-            get { return _id; }
-            set { _id = value; }
-        }
+        [Key]
+        public int Id { get; set; }
+        
+        [StringLength(100)][Required]
+        public string FirstName { get; set; }
 
-        private string _firstName;
-        public string FirstName
-        {
-            get { return _firstName; }
-            set { _firstName = value; }
-        }
+        [StringLength(100)][Required]
+        public string LastName { get; set; }
+        
+        [Required]
+        public DateTime BirthDate { get; set; }
 
-        private string _lastName;
-        public string LastName
-        {
-            get { return _lastName; }
-            set { _lastName = value; }
-        }
+        [StringLength(100)][Required]
+        public string Company { get; set; }
 
-        private DateTime _birthDate;
-        public DateTime BirthDate
-        {
-            get { return _birthDate; }
-            set { _birthDate = value; }
-        }
+        [StringLength(100)][Required]
+        public string Title { get; set; }
 
-        private string _company;
-        public string Company
-        {
-            get { return _company; }
-            set { _company = value; }
-        }
+        [StringLength(254)][Required]
+        public string Mail { get; set; }
+        
+        /*public ICollection<Comment> Comments { get; set; }
 
-        private string _title;
-        public string Title
-        {
-            get { return _title; }
-            set { _title = value; }
-        }
+        public ICollection<Post> Posts { get; set; }
 
-        private string _mail;
+        public ICollection<Like> Likes { get; set; }
 
-        public string Mail
-        {
-            get { return _mail; }
-            set { _mail = value; }
-        }
-
-
+        public ICollection<Group> Groups { get; set; }*/
+        
         public User() {}
 
         public User(int id, string firstname, string lastname, DateTime birthdate, string company, string title)

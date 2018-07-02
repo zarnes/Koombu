@@ -1,48 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace Koombu_API.Models
+namespace API.Models
 {
     public class Group
     {
-        private int _id;
-        public int Id
-        {
-            get { return _id; }
-            set { _id = value; }
-        }
-
-        private string _name;
-        public string Name
-        {
-            get { return _name; }
-            set { _name = value; }
-        }
-
-        private bool _private;
-        public bool Private
-        {
-            get { return _private; }
-            set { _private = value; }
-        }
-
-        private int _ownerId;
-        public int OwnerId
-        {
-            get { return _ownerId; }
-            set { _ownerId = value; }
-        }
+        [Key]
+        public int Id { get; set; }
+        
+        [Required]
+        public string Name { get; set; }
+        
+        public bool Private { get; set; }
+        
+        public int OwnerId { get; set; }
+        /*[Required]
+        public User Owner { get; set; }*/
 
         public Group() {}
 
-        public Group(int id, string name, bool @private, int ownerId)
+        public Group(int id, string name, bool @private, User owner)
         {
             Id = id;
             Name = name;
             Private = @private;
-            OwnerId = ownerId;
+            OwnerId = owner.Id;
         }
     }
 }
