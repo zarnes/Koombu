@@ -38,7 +38,7 @@ namespace API.Models
         public ICollection<Group> Groups { get; set; }*/
         
         public User() {}
-
+        
         public User(int id, string firstname, string lastname, DateTime birthdate, string company, string title)
         {
             Id = id;
@@ -47,6 +47,16 @@ namespace API.Models
             BirthDate = birthdate;
             Company = company;
             Title = title;
+        }
+
+        internal void Copy(User user)
+        {
+            // TODO if some value from the new user are null
+            FirstName = user.FirstName;
+            LastName = user.LastName;
+            BirthDate = user.BirthDate;
+            Company = user.Company;
+            Title = user.Title;
         }
     }
 }

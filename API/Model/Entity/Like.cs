@@ -27,5 +27,11 @@ namespace API.Models
             PostId = post.Id;
             UserId = user.Id;
         }
+
+        internal void Copy(Like like)
+        {
+            PostId = like.PostId;
+            UserId = like.UserId;
+        }
     }
 }

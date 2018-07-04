@@ -8,62 +8,62 @@ using System.Threading.Tasks;
 namespace API.Controllers
 {
     [Route("api/[controller]")]
-    public class GroupsController : Controller
+    public class LikesController
     {
         private readonly DbAPIContext context;
 
-        public GroupsController(DbAPIContext context)
+        public LikesController(DbAPIContext context)
         {
             this.context = context;
         }
 
-        // GET api/groups
+        // GET api/likes
         [HttpGet]
-        public IEnumerable<Group> Get()
+        public IEnumerable<Like> Get()
         {
-            return context.Groups;
+            return context.Likes;
         }
 
-        // GET api/groups/5
+        // GET api/likes/5
         [HttpGet("{id}")]
-        public Group Get(int id)
+        public Like Get(int id)
         {
-            return context.Groups.Find(id);
+            return context.Likes.Find(id);
         }
 
-        // POST api/groups
+        // POST api/likes
         [HttpPost]
-        public void Post([FromBody]Group group)
+        public void Post([FromBody]Like like)
         {
-            if (group.Id != 0)
+            if (like.Id != 0)
             {
-                Group grp = context.Groups.Find(group.Id);
-                if (grp != null)
+                Like lk = context.Likes.Find(like.Id);
+                if (lk != null)
                 {
-                    grp.Copy(group);
+                    lk.Copy(like);
                     context.SaveChanges();
                     return;
                 }
             }
 
-            context.Groups.Add(group);
+            context.Likes.Add(like);
             context.SaveChanges();
         }
 
-        // PUT api/groups/5
+        // PUT api/likes/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody]string value)
         {
         }
 
-        // DELETE api/groups/5
+        // DELETE api/likes/5
         [HttpDelete("{id}")]
         public bool Delete(int id)
         {
-            Group group = context.Groups.Find(id);
-            if (group != null)
+            Like like = context.Likes.Find(id);
+            if (like != null)
             {
-                context.Groups.Remove(group);
+                context.Likes.Remove(like);
                 context.SaveChanges();
                 return true;
             }

@@ -11,20 +11,18 @@ namespace API.Models
         [Key]
         public int Id { get; set; }
 
-        [StringLength(100)]
+        [StringLength(100)][Required]
         public string Title { get; set; }
 
         public string Content { get; set; }
 
         public string Picture { get; set; }
 
+        [Required]
         public int UserId { get; set; }
-        /*[Required]
-        public User User { get; set; }*/
 
+        [Required]
         public int GroupId { get; set; }
-        /*[Required]
-        public Group Group { get; set; }*/
 
         [Required]
         public DateTime CreationDate { get; set; }
@@ -39,28 +37,19 @@ namespace API.Models
             Title = title;
             Content = content;
             Picture = picture;
-            //User = user;
             UserId = user.Id;
-            //Group = group;
             GroupId = group.Id;
             Attachment = attachment;
         }
 
-        /*public static GetPost(int id)
+        internal void Copy(Post post)
         {
-            string sql = "SELECT * FROM `post` WHERE `id` = @id;";
-            MySqlCommand cmd = Database.Instance.Connection.CreateCommand();
-            cmd.CommandText = sql;
-            
-            MySqlDataReader reader = cmd.ExecuteReader();
-
-            bool result = reader.Read();
-            if (!result)
-            {
-                reader.Close();
-                cmd.Dispose();
-                return null;
-            }
-        }*/
+            Title = post.Title;
+            Content = post.Content;
+            Picture = post.Picture;
+            UserId = post.UserId;
+            GroupId = post.GroupId;
+            Attachment = post.Attachment;
+        }
     }
 }

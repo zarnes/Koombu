@@ -32,5 +32,12 @@ namespace API.Models
             UserId = user.Id;
             Content = content;
         }
+
+        internal void Copy(Comment comment)
+        {
+            PostId = comment.PostId;
+            UserId = comment.UserId;
+            Content = comment.Content;
+        }
     }
 }

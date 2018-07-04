@@ -29,5 +29,12 @@ namespace API.Models
             Private = @private;
             OwnerId = owner.Id;
         }
+
+        internal void Copy(Group group)
+        {
+            Name = group.Name;
+            Private = group.Private;
+            OwnerId = group.OwnerId;
+        }
     }
 }

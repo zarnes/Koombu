@@ -8,62 +8,62 @@ using System.Threading.Tasks;
 namespace API.Controllers
 {
     [Route("api/[controller]")]
-    public class GroupsController : Controller
+    public class PostsController
     {
         private readonly DbAPIContext context;
 
-        public GroupsController(DbAPIContext context)
+        public PostsController(DbAPIContext context)
         {
             this.context = context;
         }
 
-        // GET api/groups
+        // GET api/posts
         [HttpGet]
-        public IEnumerable<Group> Get()
+        public IEnumerable<Post> Get()
         {
-            return context.Groups;
+            return context.Posts;
         }
 
-        // GET api/groups/5
+        // GET api/posts/5
         [HttpGet("{id}")]
-        public Group Get(int id)
+        public Post Get(int id)
         {
-            return context.Groups.Find(id);
+            return context.Posts.Find(id);
         }
 
-        // POST api/groups
+        // POST api/posts
         [HttpPost]
-        public void Post([FromBody]Group group)
+        public void Post([FromBody]Post post)
         {
-            if (group.Id != 0)
+            if (post.Id != 0)
             {
-                Group grp = context.Groups.Find(group.Id);
-                if (grp != null)
+                Post pt = context.Posts.Find(post.Id);
+                if (pt != null)
                 {
-                    grp.Copy(group);
+                    pt.Copy(post);
                     context.SaveChanges();
                     return;
                 }
             }
 
-            context.Groups.Add(group);
+            context.Posts.Add(post);
             context.SaveChanges();
         }
 
-        // PUT api/groups/5
+        // PUT api/posts/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody]string value)
         {
         }
 
-        // DELETE api/groups/5
+        // DELETE api/posts/5
         [HttpDelete("{id}")]
         public bool Delete(int id)
         {
-            Group group = context.Groups.Find(id);
-            if (group != null)
+            Post post = context.Posts.Find(id);
+            if (post != null)
             {
-                context.Groups.Remove(group);
+                context.Posts.Remove(post);
                 context.SaveChanges();
                 return true;
             }

@@ -8,62 +8,62 @@ using System.Threading.Tasks;
 namespace API.Controllers
 {
     [Route("api/[controller]")]
-    public class GroupsController : Controller
+    public class UsersController : Controller
     {
         private readonly DbAPIContext context;
 
-        public GroupsController(DbAPIContext context)
+        public UsersController(DbAPIContext context)
         {
             this.context = context;
         }
 
-        // GET api/groups
+        // GET api/users
         [HttpGet]
-        public IEnumerable<Group> Get()
+        public IEnumerable<User> Get()
         {
-            return context.Groups;
+            return context.Users;
         }
 
-        // GET api/groups/5
+        // GET api/users/5
         [HttpGet("{id}")]
-        public Group Get(int id)
+        public User Get(int id)
         {
-            return context.Groups.Find(id);
+            return context.Users.Find(id);
         }
 
-        // POST api/groups
+        // POST api/users
         [HttpPost]
-        public void Post([FromBody]Group group)
+        public void Post([FromBody]User user)
         {
-            if (group.Id != 0)
+            if (user.Id != 0)
             {
-                Group grp = context.Groups.Find(group.Id);
-                if (grp != null)
+                User usr = context.Users.Find(user.Id);
+                if (usr != null)
                 {
-                    grp.Copy(group);
+                    usr.Copy(user);
                     context.SaveChanges();
                     return;
                 }
             }
 
-            context.Groups.Add(group);
+            context.Users.Add(user);
             context.SaveChanges();
         }
 
-        // PUT api/groups/5
+        // PUT api/users/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody]string value)
         {
         }
 
-        // DELETE api/groups/5
+        // DELETE api/users/5
         [HttpDelete("{id}")]
         public bool Delete(int id)
         {
-            Group group = context.Groups.Find(id);
-            if (group != null)
+            User user = context.Users.Find(id);
+            if (user != null)
             {
-                context.Groups.Remove(group);
+                context.Users.Remove(user);
                 context.SaveChanges();
                 return true;
             }
