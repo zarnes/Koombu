@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<div class="modal fade" id="adGroupModal" role="dialog">
+    <div class="modal-dialog" style="width:40%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4> Ajouter un groupe</h4>
+            </div>
+
+            <div class="modal-body">
+                <form method="post" enctype="multipart/form-data">
+                    <div class="col-sm-12">
+                        <div class="col-sm-12 well well-in-modal">
+                            <div class="col-sm-12">
+                                <input type="text" id="groupName" placeholder="Nom" />
+                            </div>
+                            <div>
+                                <input type="radio" id="private" name="private" checked />
+                                <label for="huey">Privé</label>
+                            </div>
+
+                            <div>
+                                <input type="radio" id="public" name="public" />
+                                <label for="dewey">Public</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-12" style="display: inline-block;">
+                            <button class="btn btn-primary col-sm-2 pull-right ">Ajouter</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

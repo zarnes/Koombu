@@ -15,9 +15,29 @@ namespace Koombu.Controllers
         }
         public ActionResult Connexion()
         {
+
             var Email = Request.QueryString["email"];
             var Psw = Request.QueryString["Password"];
+            if (Email == null || Psw == null)
+            {
+                return View();
+            }
+            else
+            {
+                //verifier les identifiant
+            }
             return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        public ActionResult Deconnexion()
+        {
+
+            return RedirectToAction("Index", "LandingPage");
         }
     }
 }

@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="profil col-sm-12">
+    <div class="col-sm-4 col-sm-offset-4">
+        <img class="itemLogo" src="/Content/images/@ViewBag.userPicture.png" />
+    </div>ViewBag
+    <div class="userName">
+        @ViewBag.userName;
+    </div>
+</div>
+<div class="contenue col-sm-12">
+    <div class="col-sm-2">
+        @foreach (var item in ViewBag.Groups)
+        {
+            <div>
+                <a href="@Url.Action("Index", "Home", new { groupName = item.GroupName })"> @item.GroupName </a>
+                <a class="glyphicon glyphicon-trash" href="@Url.Action("Delete", "Group", new { name = item.Id })"></a>
+            </div>
+
+            <div>
+                <a href="#" onclick='addGroup()' class="glyphicon glyphicon-plus addBtn"> Ajouter un groupe </a>
+            </div>
+
+        }
+    </div>
+    <div class="col-sm-8">
+        @foreach (var item in ViewBag.Posts)
+        {
+
+            <div class="thumbnail col-sm-10">
+                <div class="col-sm-3">
+                    <img class="itemLogo" src="/Content/images/@item.Picture" />
+                </div>
+                <D
+                    <div class="col-sm-9">
+                        <div class="col-sm-10">
+                            @item.Title
+                        </div>
+                        <div class="col-sm-2">
+                            @item.CreationDate
+                        </div>
+                        <div class="col-sm-12">
+                            @item.Resume
+                        </div>
+                        <div class="col-sm-12">
+                            <a class="glyphicon glyphicon-eye-open" href="#" onclick='postView("@item.Title,@item.Picture,@item.Content")'></a>
+                        </div>
+
+                    </div>
+
+            </div>
+        }
+    </div>
+    <div class="col-sm-2">
+        @foreach (var item in ViewBag.Users)
+        {
+            <p>@item.Name</p>
+            @if (@item.Admin)
+            {
+            <a class="glyphicon glyphicon-trash" href="@Url.Action("Delete", "User", new { userId = item.Id, ViewBag.GroupId })"></a>
+            }
+        }
+    </div>
+</div>
+

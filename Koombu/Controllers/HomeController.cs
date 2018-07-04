@@ -8,8 +8,9 @@ namespace Koombu.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(EnvironmentVariableTarget groupName)
         {
+            //chercher dans la bd avec le nom du group, voir si la personne  et recuperer le
             return View();
         }
 
