@@ -38,13 +38,35 @@ namespace API.Controllers
         {
             if (!Authenticate())
                 return null;
-            if (RequestUserId != id)
-                return null;
+            /*if (RequestUserId != id)
+                return null;*/
 
             List<int> groupsIds = context.User_Groups.Where(ug => ug.UserId == id).Select(ug => ug.GroupId).ToList();
             List<Post> matchedPosts = context.Posts.Where(p => groupsIds.Contains(p.GroupId)).ToList();
 
+            foreach(Post post in matchedPosts)
+            {
+                post.GetLinkedInformations();
+            }
+
             return matchedPosts;
+        }
+
+        [HttpGet("Group/{id}")]
+        public List<Post> Group(int id)
+        {
+            if (!Authenticate())
+                return null;
+
+            if (!context.User_Groups.Any(ug => ug.UserId == RequestUserId && ug.GroupId == id))
+                return null;
+
+            List<Post> match = context.Posts.Where(p => p.GroupId == id).ToList();
+            foreach (Post post in match)
+            {
+                post.GetLinkedInformations();
+            }
+            return match;
         }
     }
 }
