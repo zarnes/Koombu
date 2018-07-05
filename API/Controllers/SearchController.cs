@@ -44,13 +44,17 @@ namespace API.Controllers
             return matchedUsers;
         }
 
-        [HttpGet("Post/{groupId}")]
-        public List<Post> Post(int groupId)
+        [HttpGet("Post/{name}")]
+        public List<Post> Post(string name)
         {
             if (!Authenticate())
                 return null;
 
-            List<Post> matchedPosts = context.Posts.Where(p => p.GroupId == groupId).ToList();
+            List<Post> matchedPosts = context.Posts.Where(p => p.Content.Like("%" + name + "%") || p.Title.Like("%" + name + "%")).ToList();
+            foreach(Post post in matchedPosts)
+            {
+                post.GetLinkedInformations();
+            }
             return matchedPosts;
         }
     }
