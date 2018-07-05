@@ -11,7 +11,7 @@ using System;
 namespace API.Migrations
 {
     [DbContext(typeof(DbAPIContext))]
-    [Migration("20180702213748_InitialCreate2")]
+    [Migration("20180705105050_InitialCreate2")]
     partial class InitialCreate2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -85,6 +85,7 @@ namespace API.Migrations
                     b.Property<string>("Picture");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasMaxLength(100);
 
                     b.Property<int>("UserId");
@@ -116,6 +117,10 @@ namespace API.Migrations
                     b.Property<string>("Mail")
                         .IsRequired()
                         .HasMaxLength(254);
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasMaxLength(30);
 
                     b.Property<string>("Title")
                         .IsRequired()

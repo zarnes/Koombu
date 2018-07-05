@@ -39,5 +39,20 @@ namespace API.Models
             UserId = comment.UserId;
             Content = comment.Content;
         }
+
+        public bool IsValid
+        {
+            get
+            {
+                if (PostId == 0)
+                    return false;
+                if (UserId == 0)
+                    return false;
+                if (String.IsNullOrEmpty(Content) || Content.Length > 300)
+                    return false;
+
+                return true;
+            }
+        }
     }
 }

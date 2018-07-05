@@ -33,5 +33,18 @@ namespace API.Models
             PostId = like.PostId;
             UserId = like.UserId;
         }
+
+        public bool IsValid
+        {
+            get
+            {
+                if (PostId == 0)
+                    return false;
+                if (UserId == 0)
+                    return false;
+
+                return true;
+            }
+        }
     }
 }

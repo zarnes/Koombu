@@ -11,9 +11,10 @@ using System;
 namespace API.Migrations
 {
     [DbContext(typeof(DbAPIContext))]
-    partial class DbAPIContextModelSnapshot : ModelSnapshot
+    [Migration("20180705121025_InitialCreate3")]
+    partial class InitialCreate3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,6 +35,8 @@ namespace API.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("Comments");
                 });
 
@@ -49,7 +52,11 @@ namespace API.Migrations
 
                     b.Property<bool>("Private");
 
+                    b.Property<int?>("UserId");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Groups");
                 });
@@ -64,6 +71,8 @@ namespace API.Migrations
                     b.Property<int>("UserId");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Likes");
                 });
@@ -90,6 +99,8 @@ namespace API.Migrations
                     b.Property<int>("UserId");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Posts");
                 });
@@ -130,20 +141,35 @@ namespace API.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("API.Models.User_Group", b =>
+            modelBuilder.Entity("API.Models.Comment", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.HasOne("API.Models.User")
+                        .WithMany("Comments")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
 
-                    b.Property<int>("GroupId");
+            modelBuilder.Entity("API.Models.Group", b =>
+                {
+                    b.HasOne("API.Models.User")
+                        .WithMany("Groups")
+                        .HasForeignKey("UserId");
+                });
 
-                    b.Property<bool>("IsAdmin");
+            modelBuilder.Entity("API.Models.Like", b =>
+                {
+                    b.HasOne("API.Models.User")
+                        .WithMany("Likes")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
 
-                    b.Property<int>("UserId");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("User_Groups");
+            modelBuilder.Entity("API.Models.Post", b =>
+                {
+                    b.HasOne("API.Models.User")
+                        .WithMany("Posts")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }
