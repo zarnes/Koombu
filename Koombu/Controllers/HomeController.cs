@@ -16,12 +16,21 @@ namespace Koombu.Controllers
         {
             if(SessionManager.GetUser() != null)
             {
+                string id = SessionManager.GetUser().Id.ToString();
                 Dictionary<string, string> headers = new Dictionary<string, string>();
-                headers.Add("userId", SessionManager.GetUser().Id.ToString());
+                headers.Add("userId", id);
                 headers.Add("userPass", SessionManager.GetUser().Password);
-                String result = WWWFetcher.Get("http://localhost:8080/api/flux/user/"+ SessionManager.GetUser().Id.ToString(), headers);
-                List<Post> posts = JsonConvert.DeserializeObject<List<Post>>(result);
+                String fluxResult = WWWFetcher.Get("http://localhost:8080/api/flux/user/"+ id, headers);
+                List<Post> posts = JsonConvert.DeserializeObject<List<Post>>(fluxResult);
                 ViewBag.Posts = posts;
+                ViewBag.UserId = id;
+                String groupResult = WWWFetcher.Get("http://localhost:8080/api/users/" + id, headers);
+                User user = JsonConvert.DeserializeObject<User>(groupResult);
+                ViewBag.Groups = user.groups;
+
+
+
+
 
                 return View();
             }
