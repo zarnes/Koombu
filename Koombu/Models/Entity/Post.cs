@@ -34,9 +34,6 @@ namespace API.Models
         [NotMapped]
         public List<Comment> comments;
 
-        [NotMapped]
-        public List<Like> likes;
-
         public Post() { }
 
         public Post(int id, string title, string content, string picture, User user, Group group, string attachment)
@@ -60,29 +57,7 @@ namespace API.Models
             Attachment = post.Attachment;
         }
 
-        internal void GetLinkedInformations()
-        {
-            GetLinkedComments();
-            GetLinkedLikes();
-        }
-
-        internal void GetLinkedComments()
-        {
-            using (var db = new DbAPIContext())
-            {
-                comments = db.Comments.Where(c => c.PostId == Id).ToList();
-            }
-        }
-
-        internal void GetLinkedLikes()
-        {
-            // TODO add this
-            using (var db = new DbAPIContext())
-            {
-                likes = db.Likes.Where(l => l.PostId == Id).ToList();
-            }
-        }
-
+        
         [JsonIgnore]
         public bool IsValid
         {

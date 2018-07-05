@@ -75,13 +75,7 @@ namespace API.Controllers
             context.SaveChanges();
             return true;
         }
-
-        // PUT api/users/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
+        
         // DELETE api/users/5
         [HttpDelete("{id}")]
         public bool Delete(int id)
@@ -100,9 +94,12 @@ namespace API.Controllers
         }
 
         [HttpGet("Auth")]
-        public bool TestAuth()
+        public User TestAuth()
         {
-            return true;
+            string mail = Request.Headers["userMail"];
+            string pass = Request.Headers["userPass"];
+
+            return context.Users.FirstOrDefault(u => u.Mail == mail && u.Password == pass);
         }
     }
 }
