@@ -8,41 +8,29 @@ namespace Koombu.Utilities
 {
     public class WWWFetcher
     {
-        public static void Get(string url, string method)
+        public static string Get(string uri, Dictionary<string, string> headers)
         {
-            HttpWebRequest request = HttpWebRequest.CreateHttp(url);
-            request.Method = method;
+            System.Net.WebRequest req = System.Net.WebRequest.Create(uri);
 
-            request.Headers.Add("userMail", "215339@supinfo.com");
-            request.Headers.Add("userPass", "password");
-
-            //var result = request.GetResponse();
-
-            using (var web = new WebClient())
+            foreach(KeyValuePair<string, string> header in headers)
             {
-                web.Headers.Add("userMail", "215339@supinfo.com");
-                web.Headers.Add("userPass", "password");
-                var result = web.DownloadString(url);
+                req.Headers.Add(header.Key, header.Value);
             }
-
-                return;
-        }
-
-        public static string HttpGet(string URI)
-        {
-            System.Net.WebRequest req = System.Net.WebRequest.Create(URI);
-
-            req.Headers.Add("userMail", "215339@supinfo.com");
-            req.Headers.Add("userPass", "password");
 
             System.Net.WebResponse resp = req.GetResponse();
             System.IO.StreamReader sr = new System.IO.StreamReader(resp.GetResponseStream());
             return sr.ReadToEnd().Trim();
         }
 
-        public static string HttpPost(string URI, string Parameters)
+        public static string Post(string uri, string Parameters, Dictionary<string, string> headers)
         {
-            System.Net.WebRequest req = System.Net.WebRequest.Create(URI);
+            System.Net.WebRequest req = System.Net.WebRequest.Create(uri);
+
+            foreach (KeyValuePair<string, string> header in headers)
+            {
+                req.Headers.Add(header.Key, header.Value);
+            }
+
             //Add these, as we're doing a POST
             req.ContentType = "application/x-www-form-urlencoded";
             req.Method = "POST";

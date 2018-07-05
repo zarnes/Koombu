@@ -16,7 +16,7 @@ namespace Koombu.Controllers
         public ActionResult Index()
         {
 
-            string result = WWWFetcher.HttpGet("http://localhost:8080/api/users/auth");
+            string result = WWWFetcher.Get("http://localhost:8080/api/users/auth");
             User user = JsonConvert.DeserializeObject<User>(result);
             return View();
         }
