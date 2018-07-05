@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<div class="modal fade" id="addPostModalView" role="dialog">
+    <div class="modal-dialog" style="width:40%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4> Ajouter un Post</h4>
+            </div>
+
+            <div class="modal-body">
+                <form method="post" enctype="multipart/form-data">
+                    <div class="col-sm-12">
+                        <div class="col-sm-12 well well-in-modal">
+                            <label>post image</label>
+                            <input type="file" id="postImg" />
+                            <label>piéce point</label>
+                            <input type="file" id="postFile" />
+                            <label>Titre</label>
+                            <input type="text" id="postTitle" />
+                            <label>contenue</label>
+                            <textarea type="text" id="postText" />
+
+                        </div>
+                        <div class="col-sm-12" style="display: inline-block;">
+                            <button class="btn btn-primary col-sm-2 pull-right ">Ajouter</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
