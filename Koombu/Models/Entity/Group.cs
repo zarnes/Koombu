@@ -21,6 +21,10 @@ namespace API.Models
         public int OwnerId { get; set; }
         /*[Required]
         public User Owner { get; set; }*/
+        
+        public List<User> users;
+        
+        public List<Post> posts;
 
         public Group() {}
 
