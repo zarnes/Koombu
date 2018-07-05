@@ -1,4 +1,6 @@
-﻿using Koombu.Utilities;
+﻿using API.Models;
+using Koombu.Utilities;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +19,9 @@ namespace Koombu.Controllers
                 Dictionary<string, string> headers = new Dictionary<string, string>();
                 headers.Add("userId", SessionManager.GetUser().Id.ToString());
                 headers.Add("userPass", SessionManager.GetUser().Password);
-                string result = WWWFetcher.Get("http://localhost:8080/api/users/1", headers);
+                String result = WWWFetcher.Get("http://localhost:8080/api/flux/user/"+ SessionManager.GetUser().Id.ToString(), headers);
+                List<Post> posts = JsonConvert.DeserializeObject<List<Post>>(result);
+                ViewBag.Posts = posts;
 
                 return View();
             }
