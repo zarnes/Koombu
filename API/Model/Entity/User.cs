@@ -10,7 +10,10 @@ namespace API.Models
     {
         [Key]
         public int Id { get; set; }
-        
+
+        [StringLength(32)][Required]
+        public string Password { get; set; }
+
         [StringLength(100)][Required]
         public string FirstName { get; set; }
 
@@ -28,7 +31,7 @@ namespace API.Models
 
         [StringLength(254)][Required]
         public string Mail { get; set; }
-        
+
         /*public ICollection<Comment> Comments { get; set; }
 
         public ICollection<Post> Posts { get; set; }
@@ -36,7 +39,7 @@ namespace API.Models
         public ICollection<Like> Likes { get; set; }
 
         public ICollection<Group> Groups { get; set; }*/
-        
+
         public User() {}
         
         public User(int id, string firstname, string lastname, DateTime birthdate, string company, string title)

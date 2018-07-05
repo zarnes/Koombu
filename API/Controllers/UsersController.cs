@@ -1,4 +1,5 @@
-﻿using API.Models;
+﻿using API.Filters;
+using API.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -68,6 +69,12 @@ namespace API.Controllers
                 return true;
             }
             return false;
+        }
+
+        [HttpGet("Auth")]
+        public bool TestAuth()
+        {
+            return true;
         }
     }
 }
