@@ -226,7 +226,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entity\Comment.cs" />
+    <Compile Include="Models\Entity\Group.cs" />
+    <Compile Include="Models\Entity\Like.cs" />
+    <Compile Include="Models\Entity\Post.cs" />
+    <Compile Include="Models\Entity\User.cs" />
+    <Compile Include="Models\Entity\User_Group.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\SessionManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -274,7 +281,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\LandingPage\" />
   </ItemGroup>
   <ItemGroup>

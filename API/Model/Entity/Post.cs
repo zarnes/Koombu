@@ -34,6 +34,9 @@ namespace API.Models
         [NotMapped]
         public List<Comment> comments;
 
+        [NotMapped]
+        public List<Like> likes;
+
         public Post() { }
 
         public Post(int id, string title, string content, string picture, User user, Group group, string attachment)
@@ -73,7 +76,11 @@ namespace API.Models
 
         internal void GetLinkedLikes()
         {
-
+            // TODO add this
+            using (var db = new DbAPIContext())
+            {
+                likes = db.Likes.Where(l => l.PostId == Id).ToList();
+            }
         }
 
         [JsonIgnore]

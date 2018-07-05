@@ -72,46 +72,7 @@ namespace API.Models
             Title = user.Title;
         }
 
-        internal void GetLinkedInformations()
-        {
-            GetLinkedComments();
-            GetLinkedPosts();
-            GetLinkedLikes();
-            GetLinkedGroups();
-        }
-
-        internal void GetLinkedComments()
-        {
-            using (var db = new DbAPIContext())
-            {
-                commentsId = db.Comments.Where(c => c.UserId == Id).Select(c => c.Id ).ToList();
-            }
-        }
-
-        internal void GetLinkedPosts()
-        {
-            using (var db = new DbAPIContext())
-            {
-                postsId = db.Posts.Where(p => p.UserId == Id).Select(p => p.Id).ToList();
-            }
-        }
-
-        internal void GetLinkedLikes()
-        {
-            using (var db = new DbAPIContext())
-            {
-                likesId = db.Likes.Where(l => l.UserId == Id).Select(l => l.Id).ToList();
-            }
-        }
-
-        internal void GetLinkedGroups()
-        {
-            using (var db = new DbAPIContext())
-            {
-                List<int> groupsId = db.User_Groups.Where(ug => ug.UserId == Id).Select(ug => ug.UserId).ToList();
-                groups = db.Groups.Where(g => groupsId.Any(gId => gId == g.Id)).ToList();
-            }
-        }
+        
 
         [JsonIgnore]
         public bool IsValid

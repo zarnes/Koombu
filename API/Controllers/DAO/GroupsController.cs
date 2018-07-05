@@ -46,7 +46,8 @@ namespace API.Controllers
         [HttpGet("{id}")]
         public Group Get(int id)
         {
-            return context.Groups.Find(id);
+            Group group = context.Groups.Find(id);
+            return group;
         }
 
         // POST api/groups

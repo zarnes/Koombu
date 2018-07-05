@@ -57,25 +57,7 @@ namespace API.Models
             Attachment = post.Attachment;
         }
 
-        internal void GetLinkedInformations()
-        {
-            GetLinkedComments();
-            GetLinkedLikes();
-        }
-
-        internal void GetLinkedComments()
-        {
-            using (var db = new DbAPIContext())
-            {
-                comments = db.Comments.Where(c => c.PostId == Id).ToList();
-            }
-        }
-
-        internal void GetLinkedLikes()
-        {
-
-        }
-
+        
         [JsonIgnore]
         public bool IsValid
         {

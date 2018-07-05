@@ -43,5 +43,15 @@ namespace API.Controllers
 
             return matchedUsers;
         }
+
+        [HttpGet("Post/{groupId}")]
+        public List<Post> Post(int groupId)
+        {
+            if (!Authenticate())
+                return null;
+
+            List<Post> matchedPosts = context.Posts.Where(p => p.GroupId == groupId).ToList();
+            return matchedPosts;
+        }
     }
 }
