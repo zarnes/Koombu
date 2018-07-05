@@ -13,5 +13,12 @@ namespace Koombu.Controllers
         {
             return View();
         }
+
+        public ActionResult Show()
+        {
+            return View();
+        }
+
+
     }
 }

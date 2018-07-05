@@ -287,11 +287,11 @@
     <Content Include="Views\Access\Register.cshtml" />
     <Content Include="Views\Connexion\Index.cshtml" />
     <Content Include="Views\Profil\Index.cshtml" />
+    <Content Include="Views\Group\Show.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\AddUser\" />
-    <Folder Include="Views\Group\" />
     <Folder Include="Views\Register\" />
   </ItemGroup>
   <ItemGroup>

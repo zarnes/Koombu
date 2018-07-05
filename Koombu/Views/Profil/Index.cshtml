@@ -15,10 +15,13 @@
     <div class="col-sm-2">
         @foreach (var item in ViewBag.Groups)
         {
-            <div>
-                <a href="@Url.Action("Index", "Home", new { groupName = item.GroupName })"> @item.GroupName </a>
-                <a class="glyphicon glyphicon-trash" href="@Url.Action("Delete", "Group", new { name = item.Id })"></a>
-            </div>
+        <div>
+            <a href="@Url.Action("Index", "Home", new { groupName = item.Name, groupId = item.Id })"> @item.GroupName </a>
+            if (item.GroupAdminId = MySession.GetUser().Id)
+            {
+            <a class="glyphicon glyphicon-trash" href="@Url.Action("Delete", "Group", new { groupId = item.Id })"></a>
+            }
+        </div>
 
             <div>
                 <a href="#" onclick='addGroup()' class="glyphicon glyphicon-plus addBtn"> Ajouter un groupe </a>
@@ -34,7 +37,7 @@
                 <div class="col-sm-3">
                     <img class="itemLogo" src="/Content/images/@item.Picture" />
                 </div>
-                <D
+                
                     <div class="col-sm-9">
                         <div class="col-sm-10">
                             @item.Title
@@ -54,15 +57,6 @@
             </div>
         }
     </div>
-    <div class="col-sm-2">
-        @foreach (var item in ViewBag.Users)
-        {
-            <p>@item.Name</p>
-            @if (@item.Admin)
-            {
-            <a class="glyphicon glyphicon-trash" href="@Url.Action("Delete", "User", new { userId = item.Id, ViewBag.GroupId })"></a>
-            }
-        }
-    </div>
+
 </div>
 

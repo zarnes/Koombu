@@ -35,3 +35,16 @@ function addPost() {
         }
     })
 }
+
+function addUserToGroup(groupId) {
+    $.ajax({
+        type: "GET",
+        url: '/Views/Modal/addUserToGroupModalView.html',
+        data: '?group_id=' + groupId,
+        success: function (msg) {
+            $("#getModal").empty();
+            $("#getModal").html(msg);
+            $("#addUserToGroupModal").modal("show");
+        }
+    })
+}
