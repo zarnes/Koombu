@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Web;
 
 namespace API.Models
 {
@@ -44,7 +44,12 @@ namespace API.Models
 
         [NotMapped]
         public List<int> commentsId;
-        
+
+        public string FullName
+        {
+            get { return FirstName + " " + LastName; }
+        }
+
         public User() {}
         
         public User(int id, string firstname, string lastname, DateTime birthdate, string company, string title)
@@ -108,6 +113,7 @@ namespace API.Models
             }
         }
 
+        [JsonIgnore]
         public bool IsValid
         {
             get

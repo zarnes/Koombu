@@ -25,12 +25,8 @@ namespace API.Controllers
 
         private bool Authenticate()
         {
-            if (Authentifier.context == null)
-                Authentifier.context = context;
-
             string id = Request.Headers["userId"];
             string password = Request.Headers["userPass"];
-            
 
             return Authentifier.Authenticate(id, password);
         }
@@ -59,8 +55,11 @@ namespace API.Controllers
 
         // POST api/users
         [HttpPost]
-        public void Post([FromBody]User user)
+        public bool Post([FromBody]User user)
         {
+            if (!user.IsValid)
+                return false;
+
             if (user.Id != 0)
             {
                 User usr = context.Users.Find(user.Id);
@@ -68,12 +67,13 @@ namespace API.Controllers
                 {
                     usr.Copy(user);
                     context.SaveChanges();
-                    return;
+                    return true;
                 }
             }
 
             context.Users.Add(user);
             context.SaveChanges();
+            return true;
         }
 
         // PUT api/users/5

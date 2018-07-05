@@ -25,12 +25,8 @@ namespace API.Controllers
 
         private bool Authenticate()
         {
-            if (Authentifier.context == null)
-                Authentifier.context = context;
-
             string id = Request.Headers["userId"];
             string password = Request.Headers["userPass"];
-
 
             return Authentifier.Authenticate(id, password);
         }

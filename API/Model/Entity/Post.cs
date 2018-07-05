@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -75,6 +76,7 @@ namespace API.Models
 
         }
 
+        [JsonIgnore]
         public bool IsValid
         {
             get

@@ -43,7 +43,8 @@ namespace API.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasMaxLength(250);
 
                     b.Property<int>("OwnerId");
 

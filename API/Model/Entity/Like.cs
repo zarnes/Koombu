@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -34,6 +35,7 @@ namespace API.Models
             UserId = like.UserId;
         }
 
+        [JsonIgnore]
         public bool IsValid
         {
             get

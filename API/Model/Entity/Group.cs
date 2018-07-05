@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -37,6 +38,7 @@ namespace API.Models
             OwnerId = group.OwnerId;
         }
 
+        [JsonIgnore]
         public bool IsValid
         {
             get
