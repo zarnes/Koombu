@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Koombu.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -11,22 +12,20 @@ namespace Koombu.Controllers
     {
         public ActionResult Index(EnvironmentVariableTarget groupName)
         {
-            //chercher dans la bd avec le nom du group, voir si la personne  et recuperer le
-            return View();
+            if(SessionManager.GetUser() != null)
+            {
+                Dictionary<string, string> headers = new Dictionary<string, string>();
+                headers.Add("userId", SessionManager.GetUser().Id.ToString());
+                headers.Add("userPass", SessionManager.GetUser().Password);
+                string result = WWWFetcher.Get("http://localhost:8080/api/users/1", headers);
+
+                return View();
+            }
+            return RedirectToAction("Index", "LandingPage");
+            
+
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
 
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
     }
 }

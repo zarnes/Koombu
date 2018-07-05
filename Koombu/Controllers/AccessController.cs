@@ -1,4 +1,7 @@
-﻿using System;
+﻿using API.Models;
+using Koombu.Utilities;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,17 +21,7 @@ namespace Koombu.Controllers
         public ActionResult Connexion()
         {
 
-            var Email = Request.QueryString["email"];
-            var Psw = Request.QueryString["Password"];
-            if (Email == null || Psw == null)
-            {
-                return View();
-            }
-            else
-            {
-                //verifier les identifiant
-            }
-            return RedirectToAction("Index", "Home");
+            return View();
         }
 
         [HttpPost]
@@ -37,18 +30,27 @@ namespace Koombu.Controllers
             string Email = Convert.ToString(form["email"]);
             string Psw = Convert.ToString(form["password"]);
 
+
+
             if (Email == null || Psw == null)
             {
                 return View();
             }
             else
             {
-                //verifier les identifiant
-                //if identifiant exist creer $session user
-                //redirection to home page
+                Dictionary<string, string> headers = new Dictionary<string, string>();
+                headers.Add("userMail", Email);
+                headers.Add("userPass", Psw);
+                string result = WWWFetcher.Get("http://localhost:8080/api/users/auth",headers);
+                User user = JsonConvert.DeserializeObject<User>(result);
+                if (user != null)
+                {
+                    SessionManager.SetUser(user);                    
+                    return RedirectToAction("Index", "Home");
+                }
 
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Connexion", "LandingPage");
         }
 
         [HttpGet]
@@ -64,17 +66,31 @@ namespace Koombu.Controllers
             String firstName = Convert.ToString(form["firstName"]);
             String lastName = Convert.ToString(form["lastName"]);
             String email = Convert.ToString(form["email"]);
-            String brth = Convert.ToString(form["brth"]);
+            DateTime brth = Convert.ToDateTime(form["brth"]);
             String titre = Convert.ToString(form["titre"]);
             String company = Convert.ToString(form["company"]);
             String psw = Convert.ToString(form["psw"]);
 
-            // add user to th bd
+            User user = new User()
+            {
+                Password = psw,
+                FirstName = firstName,
+                LastName = lastName,
+                BirthDate = brth,
+                Title = titre,
+                Company = company,
+                Mail = email,
+
+            };
+
+            
+
+            String result =WWWFetcher.Post("http://localhost:8080/api/users", JsonConvert.SerializeObject(user),null);
             return RedirectToAction("Index", "LandingPage"); 
         }
         public ActionResult Deconnexion()
         {
-
+            SessionManager.SetUser(null);
             return RedirectToAction("Index", "LandingPage");
         }
     }
