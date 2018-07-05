@@ -47,6 +47,7 @@ namespace API.Controllers
         public Group Get(int id)
         {
             Group group = context.Groups.Find(id);
+            group.GetLinkedInformations();
             return group;
         }
 

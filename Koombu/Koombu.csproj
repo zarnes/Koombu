@@ -237,7 +237,7 @@
     <Compile Include="Models\Entity\Post.cs" />
     <Compile Include="Models\Entity\User.cs" />
     <Compile Include="Models\Entity\User_Group.cs" />
-    <Compile Include="Models\MySession.cs" />
+
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\SessionManager.cs" />
     <Compile Include="Utilities\WWWFetcher.cs" />

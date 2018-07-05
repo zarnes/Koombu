@@ -4,9 +4,9 @@
     <div class="col-sm-10">
 
         <div class="addPost">
-            <a href="#" onclick='addPost(ViewBag.GroupId)' class="glyphicon glyphicon-plus addBtn"> Ajouter un poste  </a>
+            <a href="#" onclick='addPost(ViewBag.Group.Id)' class="glyphicon glyphicon-plus addBtn"> Ajouter un poste  </a>
         </div>
-        @foreach (var item in ViewBag.Posts)
+        @foreach (var item in ViewBag.Group.Posts)
         {
 
             <div class="thumbnail col-sm-10">
@@ -35,7 +35,7 @@
     </div>
     <div>
         <p>Utilisateurs</p>
-        @foreach (var item in ViewBag.UserGroup)
+        @foreach (var item in ViewBag.Group.)
         {
         <div class="user">
 
