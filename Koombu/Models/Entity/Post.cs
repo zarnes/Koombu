@@ -30,9 +30,10 @@ namespace API.Models
         public DateTime CreationDate { get; set; }
 
         public string Attachment { get; set; }
-
-        [NotMapped]
+        
         public List<Comment> comments;
+
+        public List<Like> likes;
 
         public Post() { }
 
