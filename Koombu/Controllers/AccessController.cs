@@ -36,6 +36,7 @@ namespace Koombu.Controllers
                 //verifier les identifiant
                 //if identifiant exist creer $session user
                 //redirection to home page
+                //si il existe creer la variable de session User
 
             }
             return RedirectToAction("Index", "Home");
