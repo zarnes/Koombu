@@ -30,7 +30,7 @@ namespace API.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(maxLength: 250, nullable: false),
                     OwnerId = table.Column<int>(nullable: false),
                     Private = table.Column<bool>(nullable: false)
                 },
@@ -64,11 +64,27 @@ namespace API.Migrations
                     CreationDate = table.Column<DateTime>(nullable: false),
                     GroupId = table.Column<int>(nullable: false),
                     Picture = table.Column<string>(nullable: true),
-                    Title = table.Column<string>(maxLength: 100, nullable: true)
+                    Title = table.Column<string>(maxLength: 100, nullable: false),
+                    UserId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Posts", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "User_Groups",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    GroupId = table.Column<int>(nullable: false),
+                    IsAdmin = table.Column<bool>(nullable: false),
+                    UserId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_User_Groups", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -82,6 +98,7 @@ namespace API.Migrations
                     FirstName = table.Column<string>(maxLength: 100, nullable: false),
                     LastName = table.Column<string>(maxLength: 100, nullable: false),
                     Mail = table.Column<string>(maxLength: 254, nullable: false),
+                    Password = table.Column<string>(maxLength: 30, nullable: false),
                     Title = table.Column<string>(maxLength: 100, nullable: false)
                 },
                 constraints: table =>
@@ -103,6 +120,9 @@ namespace API.Migrations
 
             migrationBuilder.DropTable(
                 name: "Posts");
+
+            migrationBuilder.DropTable(
+                name: "User_Groups");
 
             migrationBuilder.DropTable(
                 name: "Users");

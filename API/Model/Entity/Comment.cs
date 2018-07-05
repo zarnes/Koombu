@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -38,6 +39,22 @@ namespace API.Models
             PostId = comment.PostId;
             UserId = comment.UserId;
             Content = comment.Content;
+        }
+
+        [JsonIgnore]
+        public bool IsValid
+        {
+            get
+            {
+                if (PostId == 0)
+                    return false;
+                if (UserId == 0)
+                    return false;
+                if (String.IsNullOrEmpty(Content) || Content.Length > 300)
+                    return false;
+
+                return true;
+            }
         }
     }
 }

@@ -43,7 +43,8 @@ namespace API.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasMaxLength(250);
 
                     b.Property<int>("OwnerId");
 
@@ -84,6 +85,7 @@ namespace API.Migrations
                     b.Property<string>("Picture");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasMaxLength(100);
 
                     b.Property<int>("UserId");
@@ -116,6 +118,10 @@ namespace API.Migrations
                         .IsRequired()
                         .HasMaxLength(254);
 
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasMaxLength(30);
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(100);
@@ -123,6 +129,22 @@ namespace API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("API.Models.User_Group", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("GroupId");
+
+                    b.Property<bool>("IsAdmin");
+
+                    b.Property<int>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("User_Groups");
                 });
 #pragma warning restore 612, 618
         }
