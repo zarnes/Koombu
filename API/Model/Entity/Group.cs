@@ -11,7 +11,7 @@ namespace API.Models
         [Key]
         public int Id { get; set; }
         
-        [Required]
+        [Required][MaxLength(250)]
         public string Name { get; set; }
         
         public bool Private { get; set; }
@@ -35,6 +35,17 @@ namespace API.Models
             Name = group.Name;
             Private = group.Private;
             OwnerId = group.OwnerId;
+        }
+
+        public bool IsValid
+        {
+            get
+            {
+                if (String.IsNullOrEmpty(Name) || Name.Length > 250)
+                    return false;
+
+                return true;
+            }
         }
     }
 }

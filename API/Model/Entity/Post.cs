@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -29,6 +30,9 @@ namespace API.Models
 
         public string Attachment { get; set; }
 
+        [NotMapped]
+        public List<Comment> comments;
+
         public Post() { }
 
         public Post(int id, string title, string content, string picture, User user, Group group, string attachment)
@@ -50,6 +54,42 @@ namespace API.Models
             UserId = post.UserId;
             GroupId = post.GroupId;
             Attachment = post.Attachment;
+        }
+
+        internal void GetLinkedInformations()
+        {
+            GetLinkedComments();
+            GetLinkedLikes();
+        }
+
+        internal void GetLinkedComments()
+        {
+            using (var db = new DbAPIContext())
+            {
+                comments = db.Comments.Where(c => c.PostId == Id).ToList();
+            }
+        }
+
+        internal void GetLinkedLikes()
+        {
+
+        }
+
+        public bool IsValid
+        {
+            get
+            {
+                if (String.IsNullOrEmpty(Title) || Title.Length > 100)
+                    return false;
+                if (UserId == 0)
+                    return false;
+                if (GroupId == 0)
+                    return false;
+                if (CreationDate == null)
+                    return false;
+
+                return true;
+            }
         }
     }
 }

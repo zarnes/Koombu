@@ -1,4 +1,5 @@
 ﻿using API.Models;
+using API.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -8,13 +9,30 @@ using System.Threading.Tasks;
 namespace API.Controllers
 {
     [Route("api/[controller]")]
-    public class PostsController
+    public class PostsController : Controller
     {
         private readonly DbAPIContext context;
 
         public PostsController(DbAPIContext context)
         {
             this.context = context;
+        }
+
+        private int RequestUserId
+        {
+            get { return int.Parse(Request.Headers["userId"]); }
+        }
+
+        private bool Authenticate()
+        {
+            if (Authentifier.context == null)
+                Authentifier.context = context;
+
+            string id = Request.Headers["userId"];
+            string password = Request.Headers["userPass"];
+
+
+            return Authentifier.Authenticate(id, password);
         }
 
         // GET api/posts
@@ -28,13 +46,30 @@ namespace API.Controllers
         [HttpGet("{id}")]
         public Post Get(int id)
         {
-            return context.Posts.Find(id);
+            Post post = context.Posts.Find(id);
+            post.GetLinkedInformations();
+            return post;
         }
 
         // POST api/posts
         [HttpPost]
-        public void Post([FromBody]Post post)
+        public bool Post([FromBody]Post post)
         {
+            if (!Authenticate())
+                return false;
+            
+            // Post validation
+            if (!post.IsValid)
+                return false; // If the local values are incoherents
+            if (RequestUserId != post.UserId)
+                return false; // If the post's userId is incorrect
+            if (!context.Users.Any(u => u.Id == post.UserId))
+                return false; // If the user doesn't exists
+            if (!context.Groups.Any(g => g.Id == post.GroupId))
+                return false; // If the group doesn't exists
+            if (!context.User_Groups.Any(ug => ug.UserId == post.UserId && ug.GroupId == post.GroupId))
+                return false; // If the user is not in group
+            
             if (post.Id != 0)
             {
                 Post pt = context.Posts.Find(post.Id);
@@ -42,12 +77,13 @@ namespace API.Controllers
                 {
                     pt.Copy(post);
                     context.SaveChanges();
-                    return;
+                    return true;
                 }
             }
-
+            
             context.Posts.Add(post);
             context.SaveChanges();
+            return true;
         }
 
         // PUT api/posts/5
@@ -60,9 +96,14 @@ namespace API.Controllers
         [HttpDelete("{id}")]
         public bool Delete(int id)
         {
+            
             Post post = context.Posts.Find(id);
             if (post != null)
             {
+                int userId = int.Parse(Request.Headers["userId"]);
+                if (userId != post.UserId)
+                    return false;
+
                 context.Posts.Remove(post);
                 context.SaveChanges();
                 return true;
