@@ -10,23 +10,18 @@ namespace API.Models
 {
     public class Post
     {
-        [Key]
         public int Id { get; set; }
-
-        [StringLength(100)][Required]
+        
         public string Title { get; set; }
 
         public string Content { get; set; }
 
         public string Picture { get; set; }
-
-        [Required]
+        
         public int UserId { get; set; }
-
-        [Required]
+        
         public int GroupId { get; set; }
-
-        [Required]
+        
         public DateTime CreationDate { get; set; }
 
         public string Attachment { get; set; }

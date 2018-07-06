@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.SessionState;
 
 namespace Koombu.Controllers
 {
@@ -19,6 +20,7 @@ namespace Koombu.Controllers
 
         public ActionResult Show(int idGroup)
         {
+            
             string id = SessionManager.GetUser().Id.ToString();
             Dictionary<string, string> headers = new Dictionary<string, string>();
             headers.Add("userId", id);

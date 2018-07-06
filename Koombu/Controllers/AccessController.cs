@@ -29,8 +29,7 @@ namespace Koombu.Controllers
         {
             string Email = Convert.ToString(form["email"]);
             string Psw = Convert.ToString(form["password"]);
-
-
+            
 
             if (Email == null || Psw == null)
             {
@@ -45,7 +44,10 @@ namespace Koombu.Controllers
                 User user = JsonConvert.DeserializeObject<User>(result);
                 if (user != null)
                 {
-                    SessionManager.SetUser(user);                    
+                    User newUser = new User();
+                    newUser.Copy(user);
+                    newUser.Id = user.Id;
+                    SessionManager.SetUser(newUser);                    
                     return RedirectToAction("Index", "Home");
                 }
 

@@ -76,7 +76,6 @@ namespace API.Models
 
         internal void GetLinkedLikes()
         {
-            // TODO add this
             using (var db = new DbAPIContext())
             {
                 likes = db.Likes.Where(l => l.PostId == Id).ToList();

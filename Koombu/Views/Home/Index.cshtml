@@ -10,8 +10,9 @@
         <p>Mes groupes :</p>
         @foreach (var item in ViewBag.Groups)
         {
-            <a href="@Url.Action("Show", "Group", new { groupId = item.Id })"> @item.Name </a>
-            if (item.OwnerId = ViewBag.UserId)
+            <a href="/Group/Show?idGroup=@item.Id">@item.Name</a>
+            
+            if (item.OwnerId == ViewBag.UserId)
             {
                 <a class="glyphicon glyphicon-trash" href="@Url.Action("Delete", "Group", new { groupId = item.Id })"></a>
             }
