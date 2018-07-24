@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<div class="modal fade" id="adGroupModal" role="dialog">
+<div class="modal fade" id="addGroupModal" role="dialog">
     <div class="modal-dialog" style="width:40%;">
         <div class="modal-content">
             <div class="modal-header">
@@ -8,20 +8,20 @@
             </div>
 
             <div class="modal-body">
-                <form method="post" enctype="multipart/form-data">
+                <form method="post" action="/Group/addGroup" >
                     <div class="col-sm-12">
                         <div class="col-sm-12 well well-in-modal">
                             <div class="col-sm-12">
-                                <input type="text" id="groupName" placeholder="Nom" />
+                                <input type="text" id="groupName" placeholder="Nom" name="groupName" />
                             </div>
                             <div>
-                                <input type="radio" id="private" name="private" checked />
-                                <label for="huey">Privé</label>
+                                <input type="radio" id="private" name="privacy" value="private" checked />
+                                <label for="private">Privé</label>
                             </div>
 
                             <div>
-                                <input type="radio" id="public" name="public" />
-                                <label for="dewey">Public</label>
+                                <input type="radio" id="public" name="privacy"  value="public"/>
+                                <label for="public">Public</label>
                             </div>
                         </div>
                         <div class="col-sm-12" style="display: inline-block;">

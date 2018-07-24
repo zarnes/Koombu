@@ -6,7 +6,7 @@
         success: function (msg) {
             $("#getModal").empty();
             $("#getModal").html(msg);
-            $("#adGroupModal").modal("show");
+            $("#addGroupModal").modal("show");
         }
     })
 }
@@ -24,17 +24,23 @@ function postView(picture, title, content) {
     })
 }
 
-function addPost() {
+function addPost(group_id) {
     $.ajax({
         type: "GET",
+        data : "group_id="+group_id,
         url: '/Views/Modal/addPostModalView.html',
         success: function (msg) {
             $("#getModal").empty();
             $("#getModal").html(msg);
-            $("#createPostModal").modal("show");
+            $("#addPostModalView").modal("show");
+
+            $("#addPostModalView form").on('submit', function () {
+                $(".groupId").val(group_id);
+            });
         }
     })
 }
+
 
 function addUserToGroup(groupId) {
     $.ajax({
@@ -45,6 +51,9 @@ function addUserToGroup(groupId) {
             $("#getModal").empty();
             $("#getModal").html(msg);
             $("#addUserToGroupModal").modal("show");
+            $("#addUserToGroupModal form").on('submit', function () {
+                $(".groupId").val(group_id);
+            });
         }
     })
 }

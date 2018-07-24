@@ -8,17 +8,18 @@
             </div>
 
             <div class="modal-body">
-                <form method="post" enctype="multipart/form-data">
+                <form method="post" action="Post/AddPost" enctype="multipart/form-data">
                     <div class="col-sm-12">
                         <div class="col-sm-12 well well-in-modal">
                             <label>post image</label>
-                            <input type="file" id="postImg" />
+                            <input type="file" id="postImg" name="postImg"/>
                             <label>piéce point</label>
-                            <input type="file" id="postFile" />
+                            <input type="file" id="postFile" name="postFile"/>
                             <label>Titre</label>
-                            <input type="text" id="postTitle" />
+                            <input type="text" id="postTitle" name="postTitle"/>
                             <label>contenue</label>
-                            <textarea type="text" id="postText" />
+                            <textarea type="text" id="postText" name="postText" />
+                            <input type="hidden" name="groupId" class="groupId"/>
 
                         </div>
                         <div class="col-sm-12" style="display: inline-block;">

@@ -6,7 +6,7 @@
         <div class="addPost">
             <a href="#" onclick='addPost(ViewBag.Group.Id)' class="glyphicon glyphicon-plus addBtn"> Ajouter un poste  </a>
         </div>
-        @foreach (var item in ViewBag.Group.Posts)
+        @foreach (var item in ViewBag.Group.posts)
         {
 
             <div class="thumbnail col-sm-10">
@@ -35,14 +35,14 @@
     </div>
     <div>
         <p>Utilisateurs</p>
-        @foreach (var item in ViewBag.Group.)
+        @foreach (var item in ViewBag.Group.users)
         {
         <div class="user">
 
-            <a class="glyphicon glyphicon-trash" href="@Url.Action("Delete", "User", new { userId = item.Id , GroupId = ViewBag.GroupId })"></a>@item.Name
+            <a class="glyphicon glyphicon-trash" href="@Url.Action("Delete", "User", new { userId = item.Id , GroupId = ViewBag.Group.Id })"></a>@item.Name
         </div>
         }
-        <a href="#" onclick='addUserToGroup(ViewBag.GroupId)' class="glyphicon glyphicon-plus addBtn"> Ajouter un utilisateur </a>
+        <a href="#" onclick='addUserToGroup(ViewBag.Group.Id)' class="glyphicon glyphicon-plus addBtn"> Ajouter un utilisateur </a>
 
     </div>
 

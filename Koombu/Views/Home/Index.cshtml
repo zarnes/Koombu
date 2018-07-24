@@ -15,14 +15,12 @@
             {
                 <a class="glyphicon glyphicon-trash" href="@Url.Action("Delete", "Group", new { groupId = item.Id })"></a>
             }
-            <a href="#" onclick='addGroup()' class="glyphicon glyphicon-plus addBtn"> Ajouter un group </a>
+            <a href="#" onclick='addGroup()' class="glyphicon glyphicon-plus addBtn"> Créer un groupe </a>
         }
     </div>
     <div class="col-sm-10">
 
-        <div class="addPost">
-            <a href="#" onclick='addPost()' class="glyphicon glyphicon-plus addBtn"> Ajouter un poste  </a>
-        </div>
+
         @foreach (var item in ViewBag.Posts)
         {
 
