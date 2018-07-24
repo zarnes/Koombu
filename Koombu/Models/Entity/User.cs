@@ -70,6 +70,8 @@ namespace API.Models
             BirthDate = user.BirthDate;
             Company = user.Company;
             Title = user.Title;
+            Mail = user.Mail;
+            Password = user.Password;
         }
 
         

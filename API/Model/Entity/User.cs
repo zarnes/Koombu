@@ -64,7 +64,6 @@ namespace API.Models
 
         internal void Copy(User user)
         {
-            // TODO if some value from the new user are null
             FirstName = user.FirstName;
             LastName = user.LastName;
             BirthDate = user.BirthDate;
