@@ -10,6 +10,7 @@ namespace API
 
     public class DbAPIContext : DbContext
     {
+        // Create tables with entity framework
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Group> Groups { get; set; }
         public DbSet<Like> Likes { get; set; }

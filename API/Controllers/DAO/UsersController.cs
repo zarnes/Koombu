@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace API.Controllers
 {
+    // API controller which follow CRUD rules
     [Route("api/[controller]")]
     public class UsersController : Controller
     {
@@ -38,6 +39,7 @@ namespace API.Controllers
             if (!Authenticate())
                 return null;
 
+            // Returned as json
             return context.Users;
         }
 
